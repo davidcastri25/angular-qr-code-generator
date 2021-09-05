@@ -1,0 +1,79 @@
+<div class="container">
+
+    <!-- Título de la página -->
+    <h3>Generador de códigos QR</h3>
+
+    <hr>
+
+    <!-- Container -->
+    <div class="d-flex justify-content-center row">
+        <!-- Código QR -->
+        <div class="mt-2 mb-2 justify-content-center d-flex p-2">
+            <qr-code [value]="values" [size]="width" [level]="level" class="d-flex justify-content-center">
+            </qr-code>
+        </div>
+        
+        <!-- Card donde generaremos el código QR -->
+        <div class="card mt-2 mb-2 d-flex"> 
+        
+            <div class="card-body">                
+                <!-- Input para el Nombre -->
+                <div class="mb-3">
+                    <strong class="mb-1">Introduce el nombre del código</strong>:
+                    <input [(ngModel)]="nombre" placeholder="Enlace a la IT Academy" class="form-control" />
+                </div>                
+
+                <!-- Input para el Valor -->
+                <div class="mb-3">
+                    <strong class="mb-1">Introduce el valor</strong>:
+                    <input [(ngModel)]="values" placeholder="https://www.barcelonactiva.cat/es/itacademy" class="form-control" />
+                </div>
+                                
+                <!-- Ejemplos para el valor -->
+                <div class="mb-3 d-none d-md-block">
+                    <strong class="d-block mb-1">Ejemplos de valor:</strong>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <button (click)="qrData('¡Hola Mundo!', '¡Hola Mundo!')" type="button" class="btn btn-outline-primary">¡Hola Mundo!</button>
+                        <button (click)="qrData('Itinerario Angular - IT Academy', 'https://cibernarium.barcelonactiva.cat/it-academy/inscripcio;jsessionid=CEBF68C7ABE50F177ADBEF17B019C0C7?p_p_id=activitiesbycode_WAR_cibernariumportlet&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_cacheability=cacheLevelPage&p_p_col_id=column-1&p_p_col_pos=1&p_p_col_count=2&_activitiesbycode_WAR_cibernariumportlet_id=837971')" type="button" class="btn btn-outline-primary">Itinerario Angular - IT Academy</button>
+                        <button (click)="qrData('Página web de la IT Academy', 'https://www.barcelonactiva.cat/es/itacademy')" type="button"
+                            class="btn btn-outline-primary">https://www.barcelonactiva.cat/es/itacademy</button>
+                    </div>
+                </div>
+                
+                <!-- Tamaño -->
+                <div class="mb-3">
+                    <strong class="d-block mb-1">Cambiar tamaño:</strong>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <button (click)="qrWidth(550)" type="button" class="btn btn-outline-primary">550</button>
+                        <button (click)="qrWidth(450)" type="button" class="btn btn-outline-primary">450</button>
+                        <button (click)="qrWidth(350)" type="button" class="btn btn-outline-primary">350</button>
+                        <button (click)="qrWidth(250)" type="button" class="btn btn-outline-primary">250</button>
+                    </div>
+                </div>
+                
+                <!-- Nivel de corrección -->
+                <div class="mb-3">
+                    <strong class="d-block mb-1">Cambiar nivel de corrección:</strong>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <button (click)="qrLevel('L')" type="button" class="btn btn-outline-primary">L</button>
+                        <button (click)="qrLevel('M')" type="button" class="btn btn-outline-primary">M</button>
+                        <button (click)="qrLevel('Q')" type="button" class="btn btn-outline-primary">Q</button>
+                        <button (click)="qrLevel('H')" type="button" class="btn btn-outline-primary">H</button>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <input class="btn btn-primary" type="button" value="Crear código QR">
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+</div>
