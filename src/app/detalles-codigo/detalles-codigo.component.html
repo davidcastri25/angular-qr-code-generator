@@ -1,1 +1,22 @@
-<p>detalles-codigo works!</p>
+<div class="d-flex justify-content-center row border rounded">
+    <!-- Código QR -->
+    <div class="mt-2 mb-2 justify-content-center d-flex p-2">
+        <qr-code [value]="valor" [size]="tamanio" [level]="nivel" class="d-flex justify-content-center">
+        </qr-code>
+    </div>
+
+    <!-- Card donde generaremos el código QR -->
+    <div class="card mt-2 mb-2 d-flex border-0">
+
+        <div class="card-body d-flex">            
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Nombre:</li>
+                <li class="list-group-item">Valor:</li>                
+            </ul>
+            <ul class="list-group list-group-flush flex-grow-1">
+                <li class="list-group-item">{{ nombre }}</li>
+                <li class="list-group-item">{{ valor }}</li>                
+            </ul>
+        </div>
+    </div>
+</div>

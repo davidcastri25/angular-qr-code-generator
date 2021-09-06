@@ -15,7 +15,8 @@ import { CodigoQrService } from '../shared/codigo-qr.service';
 export class ListaCodigosComponent implements OnInit {
 
   /* Properties */
-  codigosQR: CodigoQR[] = [];
+  codigosQR: CodigoQR[] = []; //Array que llenaré con la simulación de servidor
+  selectedCodigoQR?: CodigoQR;
 
   /* Constructor */
   constructor(private codigoQRService: CodigoQrService) { }
@@ -30,5 +31,10 @@ export class ListaCodigosComponent implements OnInit {
   //Obtenemos array de códigos
   getCodigosQR() {
     this.codigosQR = this.codigoQRService.getCodigosQR();
+  }
+
+  //Obtenemos el código seleccionado por el usuario
+  onCodigoQRSeleccionado(codigoQR: CodigoQR) {
+    this.selectedCodigoQR = codigoQR;
   }
 }

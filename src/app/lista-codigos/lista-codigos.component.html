@@ -11,7 +11,8 @@
             <ul class="list-group">
                 <li *ngFor="let codigoQR of codigosQR"
                 class="list-group-item list-group-item-action"
-                style="cursor: pointer;">
+                style="cursor: pointer;"
+                (click)="onCodigoQRSeleccionado(codigoQR)">
                     <a>
                         <span class="badge bg-primary me-2">{{ codigoQR.id }}</span>
                         {{ codigoQR.nombre }}                        
@@ -21,7 +22,15 @@
         </div>
         <!-- Container: Detalles de código seleccionado -->
         <div class="col-md-7">
-            <app-detalles-codigo></app-detalles-codigo>
+            <!-- Si hay un código seleccionado -->
+            <app-detalles-codigo
+            *ngIf="selectedCodigoQR; else noSelectedCodigoQRBlock" 
+            [nombre]="selectedCodigoQR.nombre"
+            [valor]="selectedCodigoQR.valor"
+            [tamanio]="selectedCodigoQR.tamanio"
+            [valor]="selectedCodigoQR.valor"></app-detalles-codigo>
+            <!-- Si no hay código seleccionado -->
+            <ng-template #noSelectedCodigoQRBlock>Por favor, selecciona un código para ver sus detalles</ng-template>
         </div>
     </div>
 </div>
