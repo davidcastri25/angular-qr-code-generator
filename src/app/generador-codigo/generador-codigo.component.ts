@@ -9,13 +9,13 @@ export class GeneradorCodigoComponent implements OnInit {
 
   /* Properties */
   public nombre: string = "";
-  public values: string = "";
-  public level: "L" | "M" | "Q" | "H";
-  public width: number;
+  public valor: string = "";
+  public nivel: "L" | "M" | "Q" | "H";
+  public tamanio: number;
 
   /* Constructor */
   constructor() {
-    this.level = "L"; 
+    this.nivel = "L"; 
     /* 
       Mainly used for QR Correction level. How much error correction may be required:
         Level L – up to 7% damage
@@ -24,7 +24,7 @@ export class GeneradorCodigoComponent implements OnInit {
         Level H – up to 30% damage
     */
     // this.values = "";
-    this.width = 200;
+    this.tamanio = 200;
   }
 
   /* Lifecycle hooks */
@@ -32,16 +32,16 @@ export class GeneradorCodigoComponent implements OnInit {
   }
 
   /* Methods */
-  qrLevel(val: "L" | "M" | "Q" | "H") {
-    this.level = val;
+  qrNivel(val: "L" | "M" | "Q" | "H") {
+    this.nivel = val;
   }
 
   qrData(nombre: string, val: string) {
     this.nombre = nombre;
-    this.values = val;    
+    this.valor = val;    
   }
 
-  qrWidth(val: number) {
-    this.width = val;
+  qrTamanio(val: number) {
+    this.tamanio = val;
   }
 }

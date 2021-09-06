@@ -9,7 +9,7 @@
     <div class="d-flex justify-content-center row">
         <!-- Código QR -->
         <div class="mt-2 mb-2 justify-content-center d-flex p-2">
-            <qr-code [value]="values" [size]="width" [level]="level" class="d-flex justify-content-center">
+            <qr-code [value]="valor" [size]="tamanio" [level]="nivel" class="d-flex justify-content-center">
             </qr-code>
         </div>
         
@@ -26,7 +26,7 @@
                 <!-- Input para el Valor -->
                 <div class="mb-3">
                     <strong class="mb-1">Introduce el valor</strong>:
-                    <input [(ngModel)]="values" placeholder="https://www.barcelonactiva.cat/es/itacademy" class="form-control" />
+                    <input [(ngModel)]="valor" placeholder="https://www.barcelonactiva.cat/es/itacademy" class="form-control" />
                 </div>
                                 
                 <!-- Ejemplos para el valor -->
@@ -44,10 +44,10 @@
                 <div class="mb-3">
                     <strong class="d-block mb-1">Cambiar tamaño:</strong>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <button (click)="qrWidth(550)" type="button" class="btn btn-outline-primary">550</button>
-                        <button (click)="qrWidth(450)" type="button" class="btn btn-outline-primary">450</button>
-                        <button (click)="qrWidth(350)" type="button" class="btn btn-outline-primary">350</button>
-                        <button (click)="qrWidth(250)" type="button" class="btn btn-outline-primary">250</button>
+                        <button (click)="qrTamanio(500)" type="button" class="btn btn-outline-primary">500</button>
+                        <button (click)="qrTamanio(400)" type="button" class="btn btn-outline-primary">400</button>
+                        <button (click)="qrTamanio(300)" type="button" class="btn btn-outline-primary">300</button>
+                        <button (click)="qrTamanio(200)" type="button" class="btn btn-outline-primary">200</button>
                     </div>
                 </div>
                 
@@ -55,10 +55,10 @@
                 <div class="mb-3">
                     <strong class="d-block mb-1">Cambiar nivel de corrección:</strong>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <button (click)="qrLevel('L')" type="button" class="btn btn-outline-primary">L</button>
-                        <button (click)="qrLevel('M')" type="button" class="btn btn-outline-primary">M</button>
-                        <button (click)="qrLevel('Q')" type="button" class="btn btn-outline-primary">Q</button>
-                        <button (click)="qrLevel('H')" type="button" class="btn btn-outline-primary">H</button>
+                        <button (click)="qrNivel('L')" type="button" class="btn btn-outline-primary">L</button>
+                        <button (click)="qrNivel('M')" type="button" class="btn btn-outline-primary">M</button>
+                        <button (click)="qrNivel('Q')" type="button" class="btn btn-outline-primary">Q</button>
+                        <button (click)="qrNivel('H')" type="button" class="btn btn-outline-primary">H</button>
                     </div>
                 </div>
                 

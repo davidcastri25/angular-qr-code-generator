@@ -3,6 +3,6 @@ export interface CodigoQR {
     id: number;
     nombre: string;
     valor: string;
-    tamanio: string;
+    tamanio: number;
     nivel: "L" | "M" | "Q" | "H";
 }
