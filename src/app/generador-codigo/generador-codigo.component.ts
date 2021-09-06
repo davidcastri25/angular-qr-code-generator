@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CodigoQR } from '../shared/codigo-qr.interface';
+import { CodigoQrService } from '../shared/codigo-qr.service';
 
 @Component({
   selector: 'app-generador-codigo',
@@ -14,7 +16,7 @@ export class GeneradorCodigoComponent implements OnInit {
   public tamanio: number;
 
   /* Constructor */
-  constructor() {
+  constructor(private codigoQRService: CodigoQrService) {
     this.nivel = "L"; 
     /* 
       Mainly used for QR Correction level. How much error correction may be required:
@@ -32,16 +34,43 @@ export class GeneradorCodigoComponent implements OnInit {
   }
 
   /* Methods */
+  //Asigna valor a propiedad nivel
   qrNivel(val: "L" | "M" | "Q" | "H") {
     this.nivel = val;
   }
 
+  //Asigna valor a propiedades nombre y valor
   qrData(nombre: string, val: string) {
     this.nombre = nombre;
     this.valor = val;    
   }
 
+  //Asigna valor a propiedad tamaño
   qrTamanio(val: number) {
     this.tamanio = val;
+  }
+
+  //Genera un nuevo objeto con los datos para crear código QR y se lo pasa al servicio codigo-qr.service
+  onCrearCodigoQR() {
+    //Obtenemos el ID del último elemento de nuestro array y le sumamos uno para el nuevo ID
+    let nuevoID = this.codigoQRService.getUltimoID() + 1;
+    
+    //Generamos nuevo objeto con las propiedades para código QR
+    let nuevoCodigoQR: CodigoQR = {
+      id: nuevoID,
+      nombre: this.nombre,
+      valor: this.valor,
+      tamanio: this.tamanio,
+      nivel: this.nivel
+    }
+
+    //Pasamos este nuevo objeto al servicio para que lo suba al array
+    this.codigoQRService.pushNuevoCodigoQR(nuevoCodigoQR);
+
+    //Limpiamos los campos
+    this.nombre = '';
+    this.valor = '';
+    this.tamanio = 200;
+    this.nivel = 'L';
   }
 }

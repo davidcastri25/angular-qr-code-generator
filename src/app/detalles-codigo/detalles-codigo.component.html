@@ -15,7 +15,7 @@
             </ul>
             <ul class="list-group list-group-flush flex-grow-1">
                 <li class="list-group-item">{{ nombre }}</li>
-                <li class="list-group-item">{{ valor }}</li>                
+                <li class="list-group-item">{{ valor | slice:0:100 }}{{ masDeCienLenght }}</li>                
             </ul>
         </div>
     </div>

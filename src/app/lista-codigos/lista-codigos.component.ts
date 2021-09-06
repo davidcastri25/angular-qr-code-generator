@@ -28,9 +28,10 @@ export class ListaCodigosComponent implements OnInit {
   }
 
   /* Methods */
-  //Obtenemos array de códigos
-  getCodigosQR() {
-    this.codigosQR = this.codigoQRService.getCodigosQR();
+  //Obtenemos array de códigos subscribiendo Observable
+  getCodigosQR(): void {
+    this.codigoQRService.getCodigosQR()
+      .subscribe(codigosQR => this.codigosQR = codigosQR);    
   }
 
   //Obtenemos el código seleccionado por el usuario
