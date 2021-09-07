@@ -2,13 +2,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 /* App Imports */
-import { CODIGOSQR } from './mock-codigos-qr';
 import { CodigoQR } from './codigo-qr.interface';
 import { MessageService } from './message.service';
-import { InMemoryDataService } from './in-memory-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +19,9 @@ export class CodigoQrService {
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };  
+  }; 
+  
+  lengthDeListaActual?: number;
 
   /* Constructor */
   constructor(
@@ -50,12 +50,6 @@ export class CodigoQrService {
       //Devolvemos un resultado vacío para que la app siga funcionando
       return of(result as T);
     }
-  }
-
-  //Método que devuelve el último ID del array de códigos QR
-  getUltimoID(): number {
-    let ultimoID: number = CODIGOSQR[CODIGOSQR.length - 1].id;
-    return ultimoID; 
   }
 
   //Método para subir un nuevo objeto al array

@@ -52,23 +52,23 @@ export class GeneradorCodigoComponent implements OnInit {
 
   //Genera un nuevo objeto con los datos para crear código QR y se lo pasa al servicio codigo-qr.service
   onCrearCodigoQR() {
-    //Obtenemos el ID del último elemento de nuestro array y le sumamos uno para el nuevo ID
-    let nuevoID = this.codigoQRService.getUltimoID() + 1;
-
+    
     //Comprobamos si los campos nombre y valor están vacíos
     if (!this.nombre.trim() || !this.valor.trim()) { return; }
-    
-    //Generamos nuevo objeto con las propiedades para código QR
-    let nuevoCodigoQR: CodigoQR = {
-      id: nuevoID,
-      nombre: this.nombre,
-      valor: this.valor,
-      tamanio: this.tamanio,
-      nivel: this.nivel
-    }
 
-    //Pasamos este nuevo objeto al servicio para que lo suba al array
-    this.codigoQRService.addNuevoCodigoQR(nuevoCodigoQR)
+    //Asigno en variables todas las propiedades excepto ID, ya que In Memory Service la asignará automáticamente
+    let nombre = this.nombre;
+    let valor = this.valor;
+    let tamanio = this.tamanio;
+    let nivel = this.nivel;
+
+    //Pasamos las propiedades como si fueran un objeto de CodigoQR al servicio para que lo suba al array
+    this.codigoQRService.addNuevoCodigoQR({
+      nombre,
+      valor,
+      tamanio,
+      nivel
+    } as CodigoQR)
       .subscribe();
 
     //Limpiamos los campos
