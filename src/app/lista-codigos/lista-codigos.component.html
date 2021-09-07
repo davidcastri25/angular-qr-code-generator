@@ -10,9 +10,10 @@
         <div class="col-md-5 mb-4">
             <ul class="list-group">
                 <li *ngFor="let codigoQR of codigosQR"
-                class="list-group-item list-group-item-action"
+                class="list-group-item list-group-item-action animate__bounceIn"
                 style="cursor: pointer;"
-                (click)="onCodigoQRSeleccionado(codigoQR)">
+                (click)="onCodigoQRSeleccionado(codigoQR)"
+                [ngClass]="{'activo': codigoQR === selectedCodigoQR }">
                     <a>
                         <span class="badge bg-primary me-2">{{ codigoQR.id }}</span>
                         {{ codigoQR.nombre }}                        
@@ -23,7 +24,7 @@
         <!-- Container: Detalles de código seleccionado -->
         <div class="col-md-7">
             <!-- Si hay un código seleccionado -->
-            <app-detalles-codigo
+            <app-detalles-codigo            
             *ngIf="selectedCodigoQR; else noSelectedCodigoQRBlock" 
             [nombre]="selectedCodigoQR.nombre"
             [valor]="selectedCodigoQR.valor"

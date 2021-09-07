@@ -1,3 +1,7 @@
+/* 
+NOTA: SUBSTITUIDO POR IN-MEMORY-DATA.SERVICE
+*/
+
 /* Interfaz de código QR */
 export interface CodigoQR {
     id: number;

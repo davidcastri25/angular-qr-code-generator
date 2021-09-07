@@ -1,7 +1,5 @@
 /* Angular Imports */
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-
 
 /* App Imports */
 import { CodigoQR } from '../shared/codigo-qr.interface';

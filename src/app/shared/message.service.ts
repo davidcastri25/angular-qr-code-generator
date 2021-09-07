@@ -1,3 +1,10 @@
+/* 
+NOTA: NO IMPLEMENTADO
+
+NO SACO MENSAJES POR PANTALLA
+*/
+
+
 /* Angular Imports */
 import { Injectable } from '@angular/core';
 

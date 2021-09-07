@@ -1,0 +1,9 @@
+.nombre-pagina {
+  letter-spacing: 1.5px;
+}
+
+.active {
+  background-color: rgb(225, 237, 245);
+  border-radius: 5px;
+  color: black;
+}
