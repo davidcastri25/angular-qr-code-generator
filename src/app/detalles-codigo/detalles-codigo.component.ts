@@ -1,5 +1,10 @@
 /* Angular Imports */
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs';
+
+/* App Imports */
+import { CodigoQR } from '../shared/codigo-qr.interface';
+import { CodigoQrService } from '../shared/codigo-qr.service';
 
 @Component({
   selector: 'app-detalles-codigo',
@@ -10,14 +15,17 @@ import { Component, Input, OnInit } from '@angular/core';
 export class DetallesCodigoComponent implements OnInit {
 
   /* Properties */
+  @Input() selectedCodigoQR!: CodigoQR;
   @Input() nombre!: string;
   @Input() valor!: string;
   @Input() tamanio!: number;
   @Input() nivel!: "L" | "M" | "Q" | "H";
-  masDeCienLenght: string = "";
+  @Output() onDeleteCodigoQR = new EventEmitter();
+  
+  masDeCienLenght: string = ""; //Propiedad para controlar el length en el display de la propiedad valor  
 
   /* Constructor */
-  constructor() { }
+  constructor(private codigoQrService: CodigoQrService) { }
 
   /* Lifecycle hooks */
   ngOnInit(): void {
@@ -31,6 +39,12 @@ export class DetallesCodigoComponent implements OnInit {
     if (this.valor.length > 100) {
       this.masDeCienLenght = "..."
     } 
+  }
+
+  //Pasamos el código QR a eliminar al servicio para que él lo elimine
+  delete(codigoQR: CodigoQR): void {
+    this.codigoQrService.deleteCodigoQR(codigoQR.id).subscribe();
+    this.onDeleteCodigoQR.emit(true);    
   }
 
 }

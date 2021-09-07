@@ -18,9 +18,10 @@ export class CodigoQrService {
 
   /* Properties */
   codigosQrUrl = 'api/CODIGOSQR'; //URL para la WEB API (CODIGOSQR es la constante que contiene el array de objetos en el servicio in-memory)
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  };  
 
   /* Constructor */
   constructor(
@@ -62,6 +63,18 @@ export class CodigoQrService {
     return this.http.post<CodigoQR>(this.codigosQrUrl, codigoQR, this.httpOptions).pipe(
       tap((newCodigoQR: CodigoQR) => this.log(`Nuevo código añadido. ID = ${newCodigoQR.id}`)),
       catchError(this.handleError<CodigoQR>('addNuevoCodigoQR'))
+    );
+  }
+
+  //Método para eliminar código QR del servidor
+  deleteCodigoQR(id: number): Observable<CodigoQR> {
+    //URL necesaria para borrar según la API In-Memory
+    const url = `${this.codigosQrUrl}/${id}`;
+
+    //Devolvemos el observable
+    return this.http.delete<CodigoQR>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`Código QR eliminado. ID = ${id}`)),
+      catchError(this.handleError<CodigoQR>('deleteCodigoQR'))
     );
   }
 

@@ -28,7 +28,9 @@
             [nombre]="selectedCodigoQR.nombre"
             [valor]="selectedCodigoQR.valor"
             [tamanio]="selectedCodigoQR.tamanio"
-            [valor]="selectedCodigoQR.valor"></app-detalles-codigo>
+            [valor]="selectedCodigoQR.valor"
+            [selectedCodigoQR]="selectedCodigoQR"
+            (onDeleteCodigoQR)="onDeleteCodigoQR()"></app-detalles-codigo>
             <!-- Si no hay código seleccionado -->
             <ng-template #noSelectedCodigoQRBlock>Por favor, selecciona un código para ver sus detalles</ng-template>
         </div>

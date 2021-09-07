@@ -1,5 +1,6 @@
 /* Angular Imports */
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 
 
 /* App Imports */
@@ -16,7 +17,8 @@ export class ListaCodigosComponent implements OnInit {
 
   /* Properties */
   codigosQR: CodigoQR[] = []; //Array que llenaré con la simulación de servidor
-  selectedCodigoQR?: CodigoQR;
+  selectedCodigoQR?: CodigoQR; //Código seleccionado
+  
 
   /* Constructor */
   constructor(private codigoQRService: CodigoQrService) { }
@@ -25,7 +27,7 @@ export class ListaCodigosComponent implements OnInit {
   ngOnInit(): void {
     //Llamamos al método para tener nuestro array de códigos al momento de inicializar el componente
     this.getCodigosQR();
-  }
+  }  
 
   /* Methods */
   //Obtenemos array de códigos subscribiendo Observable
@@ -37,5 +39,11 @@ export class ListaCodigosComponent implements OnInit {
   //Obtenemos el código seleccionado por el usuario
   onCodigoQRSeleccionado(codigoQR: CodigoQR) {
     this.selectedCodigoQR = codigoQR;
+  }
+
+  //Evento recibido del hijo detalles-codigo, para actualizar los componentes después de que se haya borrado un código QR
+  onDeleteCodigoQR() {
+    this.selectedCodigoQR = undefined;
+    this.getCodigosQR();
   }
 }

@@ -18,5 +18,13 @@
                 <li class="list-group-item">{{ valor | slice:0:100 }}{{ masDeCienLenght }}</li>                
             </ul>
         </div>
+
+        <div class="card-body d-flex justify-content-around">
+            <button type="button" class="btn btn-success">Descargar</button>
+            <button 
+            type="button" 
+            class="btn btn-danger"
+            (click)="delete(selectedCodigoQR)">Eliminar</button>
+        </div>
     </div>
 </div>
