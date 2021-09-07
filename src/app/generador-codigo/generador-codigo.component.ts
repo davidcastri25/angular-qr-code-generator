@@ -54,6 +54,9 @@ export class GeneradorCodigoComponent implements OnInit {
   onCrearCodigoQR() {
     //Obtenemos el ID del último elemento de nuestro array y le sumamos uno para el nuevo ID
     let nuevoID = this.codigoQRService.getUltimoID() + 1;
+
+    //Comprobamos si los campos nombre y valor están vacíos
+    if (!this.nombre.trim() || !this.valor.trim()) { return; }
     
     //Generamos nuevo objeto con las propiedades para código QR
     let nuevoCodigoQR: CodigoQR = {
@@ -65,7 +68,8 @@ export class GeneradorCodigoComponent implements OnInit {
     }
 
     //Pasamos este nuevo objeto al servicio para que lo suba al array
-    this.codigoQRService.pushNuevoCodigoQR(nuevoCodigoQR);
+    this.codigoQRService.addNuevoCodigoQR(nuevoCodigoQR)
+      .subscribe();
 
     //Limpiamos los campos
     this.nombre = '';
